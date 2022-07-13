@@ -1,0 +1,31 @@
+-- I am creating a table of my favorite books with information that I think would be relevant if I wanted to re-read anything 
+
+CREATE TABlE Favorite_2022_Books (
+    ID INTEGER PRIMARY KEY, 
+    Name TEXT, 
+    Author TEXT, 
+    Genre TEXT,
+    Amazon_Price INTEGER, 
+    Five_Star_Rating INTEGER
+   )
+ ;
+
+-- Now that I have set up the parameters for my table, I will insert some of the books that really stood out to my this year 
+
+INSERT INTO Favorite_2022_Books 
+
+-- Some of these values are not 5 stars, because they are just what stood out to me this year in particular 
+
+VALUES 
+(1, "Atomic Habits", "James Clear", "Non-fiction", 14.95, 4.5), 
+(2, "An Offer from A Gentleman", "Julia Quinn", "Romance", 7.99, 3.5),
+(3, "Red, White, & Royal Blue", "Casey McQuiston", "Romance", 14.95, 4), 
+(4, "The Sun and Her Flowers", "Rupi Kaur", "Poetry", 12.40, 3.5),
+(5, "Inward", "Yung Pueblo", "Poetry", 10.39, 1),
+(6, "The Song of Achilles", "Madeline Miller", "Action", 14.95, 5),
+(7, "Together", "Vivek H. Murthy", "Non-fiction", 14.95, 3.5)
+;
+
+-- I am finding how much the sum of the books in each genre is using the Amazon Kindle prices 
+
+SELECT Genre, SUM(Amazon_Price) FROM Favorite_2022_Books GROUP BY Genre; 

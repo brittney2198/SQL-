@@ -58,13 +58,13 @@ SELECT avg(height_m), max(height_m), min(height_m) FROM marvels;
 -- The maximum height is 2.87m. 
 -- The minimum height is 1.6m. 
 
--- I want to determine all the heroes whose height is above 2.0m. 
+-- I want to determine all the characters whose height is above 2.0m. 
 
 SELECT name, max(height_m) AS the_tallest FROM marvels
   GROUP BY name
   HAVING height_m > 2.0; 
 
--- All of the heroes with height > 2.0m is Doctor Doom, Hulk, Juggernaut, and Thanos. 
+-- All of the characters with height > 2.0m is Doctor Doom, Hulk, Juggernaut, and Thanos. 
 
 -- I would like to now categorize the heights of all of the characters. 
 

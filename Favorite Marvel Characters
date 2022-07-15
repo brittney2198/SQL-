@@ -76,7 +76,7 @@ SELECT name,
     END AS height 
 FROM marvels; 
 
--- Output 
+/* Output 
 Spider Man	small
 Iron Man	tall
 Hulk	tall
@@ -103,6 +103,7 @@ Ghost Rider	tall
 Venon	tall
 Juggernaut	tall
 Professor X	tall
+*/
 
 -- And finally, I want to know the most popular female characters. 
 

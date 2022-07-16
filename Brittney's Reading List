@@ -1,4 +1,4 @@
--- I am creating a table of my favorite books with information that I think would be relevant if I wanted to re-read anything 
+-- I am creating a table of my favorite books with information that I think would be relevant if I wanted to re-read anything.
 
 CREATE TABlE Favorite_2022_Books (
     ID INTEGER PRIMARY KEY, 
@@ -10,11 +10,11 @@ CREATE TABlE Favorite_2022_Books (
    )
  ;
 
--- Now that I have set up the parameters for my table, I will insert some of the books that really stood out to my this year 
+-- Now that I have set up the parameters for my table, I will insert some of the books that really stood out to my this year.
 
 INSERT INTO Favorite_2022_Books 
 
--- Some of these values are not 5 stars, because they are just what stood out to me this year in particular 
+-- Some of these values are not 5 stars, because they are just what stood out to me this year in particular. 
 
 VALUES 
 (1, "Atomic Habits", "James Clear", "Non-fiction", 14.95, 4.5), 

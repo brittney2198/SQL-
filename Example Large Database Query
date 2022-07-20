@@ -1,0 +1,48 @@
+-- In this example, I will query interesting data from a large set of linked tables in a database. 
+
+#Show Customers (their full names, customer ID, and country) who are not in the US. 
+
+SELECT FirstName, LastName, CustomerID, Country FROM chinook.customers
+WHERE Country != "USA"; 
+
+#Show only the Customers from Brazil.
+
+SELECT  FirstName, LastName, CustomerID, Country FROM chinook.customers
+WHERE Country = "Brazil";
+
+#Find the invoices of customers who are from Brazil. 
+
+SELECT FirstName, LastName, CustomerID, Country, Invoiceid, Invoicedate, BillingCountry FROM chinook.customers c
+LEFT JOIN chinook.invoices i
+ON c.CustomerId = i.CustomerId
+WHERE c.Country = "Brazil"; 
+
+#Show the Employees who are Sales Agents.
+
+SELECT * FROM chinook.employees
+WHERE Title like "%Sales%Agent%";
+
+#Find a unique list of billing countries from the Invoice table.
+
+SELECT distinct BillingCountry FROM chinook.invoices;
+
+#Provide a query that shows the invoices associated with each sales agent. 
+
+SELECT c.FirstName as Customer_First, c.LastName AS Customer_Last, InvoiceId, CustomerId, BillingCountry, 
+e. FirstName AS SalesRep_First, e.LastName AS SalesRep_Last
+FROM chinook.invoices i
+  JOIN chinook.customers c
+  ON i.CustomerId = c.CustomerId
+  JOIN chinook.employees e
+  ON c.SupportRepid = e.EmployeeId
+ORDER BY InvoiceId;
+
+#How many Invoices were there in 2009?
+
+SELECT * FROM chinook.invoices 
+WHERE InvoiceDate like "2009%"; 
+
+#What are the total sales for 2009?
+
+SELECT sum(Total) FROM chinook.invoices
+WHERE InvoiceDate like "2009%";

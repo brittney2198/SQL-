@@ -13,8 +13,8 @@ WHERE Country = "Brazil";
 #Find the invoices of customers who are from Brazil. 
 
 SELECT FirstName, LastName, CustomerID, Country, Invoiceid, Invoicedate, BillingCountry FROM chinook.customers c
-LEFT JOIN chinook.invoices i
-ON c.CustomerId = i.CustomerId
+  LEFT JOIN chinook.invoices i
+  ON c.CustomerId = i.CustomerId
 WHERE c.Country = "Brazil"; 
 
 #Show the Employees who are Sales Agents.
@@ -46,3 +46,32 @@ WHERE InvoiceDate like "2009%";
 
 SELECT sum(Total) FROM chinook.invoices
 WHERE InvoiceDate like "2009%";
+
+#Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+
+SELECT t.Name AS Track_Name, a.Title AS Album, m.Name AS Media_Type, g.Name AS Genre FROM chinook.tracks t
+  JOIN chinook.albums a
+  ON a.AlbumId = t.AlbumID
+  JOIN chinook.media_types m
+  ON m.MediaTypeId = t.MediaTypeId
+  JOIN chinook.genres g
+  ON g.GenreId = t.GenreId;
+  
+#Show the total sales made by each sales agent.
+
+SELECT e.FirstName, e.LastName, sum(Total) FROM chinook.invoices i 
+  JOIN chinook.customers c 
+  ON i.CustomerId = c.CustomerId
+  JOIN chinook.employees e 
+  ON e.EmployeeId = c.SupportRepId
+GROUP BY e.FirstName;
+
+#Which sales agent made the most in sales in 2009?
+
+SELECT e.FirstName, e.LastName, sum(Total) FROM chinook.invoices i 
+  JOIN chinook.customers c 
+  ON i.CustomerId = c.CustomerId
+  JOIN chinook.employees e 
+  ON e.EmployeeId = c.SupportRepId
+WHERE InvoiceDate like "2009%"
+GROUP BY e.FirstName;

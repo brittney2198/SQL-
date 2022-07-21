@@ -68,10 +68,11 @@ GROUP BY e.FirstName;
 
 #Which sales agent made the most in sales in 2009?
 
-SELECT e.FirstName, e.LastName, sum(Total) FROM chinook.invoices i 
+SELECT e.FirstName, e.LastName, round(sum(Total),2) FROM chinook.invoices i 
   JOIN chinook.customers c 
   ON i.CustomerId = c.CustomerId
   JOIN chinook.employees e 
   ON e.EmployeeId = c.SupportRepId
 WHERE InvoiceDate like "2009%"
-GROUP BY e.FirstName;
+GROUP BY e.FirstName
+ORDER BY sum(Total)desc LIMIT 1; 
